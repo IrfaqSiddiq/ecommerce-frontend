@@ -1,8 +1,15 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes, Link, useParams } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Link,
+  useParams,
+} from 'react-router-dom';
 import ProductList from './components/ProductList';
 import ProductDetail from './components/ProductDetail';
 import LoginForm from './components/LoginForm';
+import AddProduct from './components/AddProduct';
 
 function App() {
   return (
@@ -12,11 +19,31 @@ function App() {
         <div style={styles.sidebar}>
           <nav>
             <ul style={styles.navList}>
-              <li style={styles.navItem}><Link to="/" style={styles.link}>Home</Link></li>
-              <li style={styles.navItem}><Link to="/products" style={styles.link}>Products</Link></li>
-              <li style={styles.navItem}><Link to="/detail" style={styles.link}>Detail</Link></li>
-              <li style={styles.navItem}><Link to="/user/123" style={styles.link}>User 123</Link></li>
-              <li style={styles.navItem}><Link to="/login" style={styles.link}>Login</Link></li>
+              <li style={styles.navItem}>
+                <Link to="/" style={styles.link}>
+                  Home
+                </Link>
+              </li>
+              <li style={styles.navItem}>
+                <Link to="/products" style={styles.link}>
+                  Products
+                </Link>
+              </li>
+              <li style={styles.navItem}>
+                <Link to="/detail" style={styles.link}>
+                  Detail
+                </Link>
+              </li>
+              <li style={styles.navItem}>
+                <Link to="/user/123" style={styles.link}>
+                  User 123
+                </Link>
+              </li>
+              <li style={styles.navItem}>
+                <Link to="/login" style={styles.link}>
+                  Login
+                </Link>
+              </li>
             </ul>
           </nav>
         </div>
@@ -37,6 +64,8 @@ function App() {
             <Route path="/user/:id" element={<UserProfile />} />
 
             <Route path="/login" element={<LoginForm />} />
+
+            <Route path="/products/add" element={<AddProduct />} />
 
             {/* Catch-all 404 route */}
             <Route path="*" element={<h1>404: Page Not Found</h1>} />
@@ -84,7 +113,6 @@ const styles = {
   },
   navItem: {
     width: '100%',
-
   },
   link: {
     color: 'white',
